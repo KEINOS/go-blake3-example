@@ -21,17 +21,23 @@ fmt.Println("actual:", actual)
 
 - About BLAKE3
     - [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3) | BLAKE(hash function) @ Wikipedia
-    - [Official repo for Rust and C](https://github.com/BLAKE3-team/BLAKE3) @ GitHub
+    - [Official repo for Rust and C](https://github.com/BLAKE3-team/BLAKE3) | BLAKE3 Team @ GitHub
 - About BLAKE3 for Go
-    - `go get lukechampine.com/blake3`
-    - [Repo](https://github.com/lukechampine/blake3) | lukechampine @ GitHub
-    - [Document](https://pkg.go.dev/lukechampine.com/blake3) @ pkg.go.dev
+    - We compared the below BLAKE3 implementations in Go (Unofficial)
+    - Luke Champine's BLAKE3 for Go
+        - `go get lukechampine.com/blake3`
+        - [Repo](https://github.com/lukechampine/blake3) | lukechampine @ GitHub
+        - [Document](https://pkg.go.dev/lukechampine.com/blake3) @ pkg.go.dev
+    - Zeebo's BLAKE3 for Go
+        - `go get github.com/zeebo/blake3`
+        - [Repo](https://github.com/zeebo/blake3) | zeebo @ GitHub
+        - [Document](https://pkg.go.dev/github.com/zeebo/blake3) @ pkg.go.dev
 
 ## Bench Results
 
 OMG ... even `blake3.Sum512()`(64Bytes long hash) is faster than `fnv.New32()`(4Bytes long hash, [FNV1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)).
 
-... Am I [doing something](./benchmark_test.go) wrong?
+Blake3-512bit (Luke ver) was 45,450 iterations/10s max and FNV1a-128 was 5,086 iterations/10s max ... Am I [doing something](./benchmark_test.go) wrong?
 
 ```shellsession
 $ go test -failfast -benchmem -shuffle=on -benchtime=10s -count=2 -bench . | go-prettybench -sort iter
