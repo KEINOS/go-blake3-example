@@ -1,0 +1,51 @@
+-test.shuffle 1630647622685374698
+goos: linux
+goarch: amd64
+pkg: github.com/KEINOS/go-blake3-example
+cpu: Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz
+BenchmarkBlake3_verLuke_256b_Sum256-4    	   44686	    265450 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verLuke_256b_Sum256-4    	   45074	    267685 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake2b_256b-4                  	   10000	   1024481 ns/op	      32 B/op	       1 allocs/op
+BenchmarkBlake2b_256b-4                  	   10000	   1033077 ns/op	      32 B/op	       1 allocs/op
+BenchmarkFnv1a_128b-4                    	    5086	   2378603 ns/op	      16 B/op	       1 allocs/op
+BenchmarkFnv1a_128b-4                    	    5007	   2381481 ns/op	      16 B/op	       1 allocs/op
+BenchmarkSHA3_512b-4                     	    2097	   5814508 ns/op	     576 B/op	       3 allocs/op
+BenchmarkSHA3_512b-4                     	    1995	   5791606 ns/op	     576 B/op	       3 allocs/op
+BenchmarkSHA3_256b-4                     	    3835	   3088634 ns/op	     512 B/op	       3 allocs/op
+BenchmarkSHA3_256b-4                     	    3625	   3077951 ns/op	     512 B/op	       3 allocs/op
+BenchmarkCRC_32b-4                       	  243198	     47961 ns/op	       8 B/op	       1 allocs/op
+BenchmarkCRC_32b-4                       	  244780	     47649 ns/op	       8 B/op	       1 allocs/op
+BenchmarkSHA_512b-4                      	    6532	   1724438 ns/op	      64 B/op	       1 allocs/op
+BenchmarkSHA_512b-4                      	    6822	   1723206 ns/op	      64 B/op	       1 allocs/op
+BenchmarkSHA_256b-4                      	    4658	   2551495 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSHA_256b-4                      	    4762	   2582088 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSHA1_160b-4                     	   10000	   1018496 ns/op	      24 B/op	       1 allocs/op
+BenchmarkSHA1_160b-4                     	   10000	   1006894 ns/op	      24 B/op	       1 allocs/op
+BenchmarkBlake3_verZeebo_256b_Sum256-4   	   39244	    304917 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verZeebo_256b_Sum256-4   	   39152	    305363 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFnv1_128b-4                     	    4794	   2489412 ns/op	      16 B/op	       1 allocs/op
+BenchmarkFnv1_128b-4                     	    4761	   2487175 ns/op	      16 B/op	       1 allocs/op
+BenchmarkBlake3_verLuke_256b-4           	   45418	    263648 ns/op	     256 B/op	       1 allocs/op
+BenchmarkBlake3_verLuke_256b-4           	   45156	    265941 ns/op	     256 B/op	       1 allocs/op
+BenchmarkBlake3_verZeebo_512b_Sum512-4   	   39444	    305269 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verZeebo_512b_Sum512-4   	   39351	    305105 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake2b_512b-4                  	   10000	   1014975 ns/op	      64 B/op	       1 allocs/op
+BenchmarkBlake2b_512b-4                  	   10000	   1012269 ns/op	      64 B/op	       1 allocs/op
+BenchmarkAdler_32b-4                     	   31203	    388880 ns/op	       8 B/op	       1 allocs/op
+BenchmarkAdler_32b-4                     	   31192	    387463 ns/op	       8 B/op	       1 allocs/op
+BenchmarkWhirlpool_512b-4                	     478	  25161964 ns/op	      64 B/op	       1 allocs/op
+BenchmarkWhirlpool_512b-4                	     475	  25015145 ns/op	      64 B/op	       1 allocs/op
+BenchmarkBlake3_verLuke_512b-4           	   45450	    267978 ns/op	     512 B/op	       1 allocs/op
+BenchmarkBlake3_verLuke_512b-4           	   44203	    268500 ns/op	     512 B/op	       1 allocs/op
+BenchmarkBlake3_verZeebo_256b-4          	   40299	    303852 ns/op	      64 B/op	       2 allocs/op
+BenchmarkBlake3_verZeebo_256b-4          	   39654	    304503 ns/op	      64 B/op	       2 allocs/op
+BenchmarkBlake3_verZeebo_512b-4          	   38486	    309934 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verZeebo_512b-4          	   38756	    314019 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verLuke_512b_Sum512-4    	   45038	    267096 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlake3_verLuke_512b_Sum512-4    	   45058	    264517 ns/op	       0 B/op	       0 allocs/op
+BenchmarkMMH3_128b-4                     	   58870	    200276 ns/op	      16 B/op	       1 allocs/op
+BenchmarkMMH3_128b-4                     	   59395	    202113 ns/op	      16 B/op	       1 allocs/op
+BenchmarkMD5_128b-4                      	    8065	   1425792 ns/op	      16 B/op	       1 allocs/op
+BenchmarkMD5_128b-4                      	    8367	   1424841 ns/op	      16 B/op	       1 allocs/op
+PASS
+ok  	github.com/KEINOS/go-blake3-example	582.746s
