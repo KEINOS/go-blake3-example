@@ -12,6 +12,9 @@ import (
 	"io"
 	"testing"
 
+	xxHashOneOfOne "github.com/OneOfOne/xxhash"
+	xxHashCespare "github.com/cespare/xxhash"
+
 	"github.com/jzelinskie/whirlpool"
 	"github.com/reusee/mmh3"
 	blake3Zeebo "github.com/zeebo/blake3"
@@ -48,8 +51,7 @@ func BenchmarkBlake2b_512b(b *testing.B) {
 }
 
 func BenchmarkBlake3_verLuke_256b(b *testing.B) {
-	h := blake3Luke.New(256, nil)
-	benchHashWriteAndSum(b, h)
+	benchHashWriteAndSum(b, blake3Luke.New(256, nil))
 }
 
 func BenchmarkBlake3_verLuke_256b_Sum256(b *testing.B) {
@@ -62,8 +64,7 @@ func BenchmarkBlake3_verLuke_256b_Sum256(b *testing.B) {
 }
 
 func BenchmarkBlake3_verLuke_512b(b *testing.B) {
-	h := blake3Luke.New(512, nil)
-	benchHashWriteAndSum(b, h)
+	benchHashWriteAndSum(b, blake3Luke.New(512, nil))
 }
 
 func BenchmarkBlake3_verLuke_512b_Sum512(b *testing.B) {
@@ -161,6 +162,45 @@ func BenchmarkSHA3_512b(b *testing.B) {
 
 func BenchmarkWhirlpool_512b(b *testing.B) {
 	benchHashWriteAndSum(b, whirlpool.New())
+}
+
+func BenchmarkXxhashCespare_8byte_64bit(b *testing.B) {
+	benchHashWriteAndSum(b, xxHashCespare.New())
+}
+
+func BenchmarkXxhashCespare_8byte_64bit_Sum64(b *testing.B) {
+	data := testData(b)
+
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		xxHashCespare.Sum64(data)
+	}
+}
+
+func BenchmarkXxhashOneOfOne_4byte_32bit(b *testing.B) {
+	benchHashWriteAndSum(b, xxHashOneOfOne.New32())
+}
+
+func BenchmarkXxhashOneOfOne_4byte_32bit_Sum32(b *testing.B) {
+	data := testData(b)
+
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		xxHashOneOfOne.Checksum32(data)
+	}
+}
+
+func BenchmarkXxhashOneOfOne_8byte_64bit(b *testing.B) {
+	benchHashWriteAndSum(b, xxHashOneOfOne.New64())
+}
+
+func BenchmarkXxhashOneOfOne_8byte_64bit_Sum64(b *testing.B) {
+	data := testData(b)
+
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		xxHashOneOfOne.Checksum64(data)
+	}
 }
 
 // ============================================================================

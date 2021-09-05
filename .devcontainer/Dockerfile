@@ -10,4 +10,6 @@ USER root
 USER vscode
 
 # [Optional] Uncomment the next line to use go get to install anything else you need
-RUN cd /tmp && go install github.com/KEINOS/go-prettybench@latest
+RUN cd /tmp && \
+    go install github.com/KEINOS/go-prettybench@latest && \
+    go install golang.org/x/perf/cmd/benchstat@latest

@@ -6,6 +6,8 @@ import (
 	"io"
 	"testing"
 
+	xxHashOneOfOne "github.com/OneOfOne/xxhash"
+	xxHashCespare "github.com/cespare/xxhash"
 	"github.com/stretchr/testify/assert"
 	blake3Zeebo "github.com/zeebo/blake3"
 	blake3Luke "lukechampine.com/blake3"
@@ -209,6 +211,34 @@ func TestBlake3Zeebo_64byte_512bit_Sum512(t *testing.T) {
 	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
 	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f243a9903464658159cf8b216e79006e12ef3568851423fa7c97002cbb9ca4dc44"
 	actual := fmt.Sprintf("%x", valByte)
+
+	assert.Equal(t, expect, actual, "wrong hash value returned")
+}
+
+// ----------------------------------------------------------------------------
+//  xxHash
+// ----------------------------------------------------------------------------
+
+func TestXxhashOneOfOne_8byte_64bit_Sum64(t *testing.T) {
+	input := "This is a string"
+
+	hashByte := xxHashOneOfOne.ChecksumString64(input)
+
+	// Expect value was taken from online: https://asecuritysite.com/encryption/xxhash
+	expect := fmt.Sprintf("%x", 0x0717e8ee90118ae1)
+	actual := fmt.Sprintf("%x", hashByte)
+
+	assert.Equal(t, expect, actual, "wrong hash value returned")
+}
+
+func TestXxhashCespare_8byte_64bit_Sum64(t *testing.T) {
+	input := "This is a string"
+
+	hashByte := xxHashCespare.Sum64String(input)
+
+	// Expect value was taken from online: https://asecuritysite.com/encryption/xxhash
+	expect := fmt.Sprintf("%x", 0x0717e8ee90118ae1)
+	actual := fmt.Sprintf("%x", hashByte)
 
 	assert.Equal(t, expect, actual, "wrong hash value returned")
 }

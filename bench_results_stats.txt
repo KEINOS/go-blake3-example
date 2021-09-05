@@ -1,0 +1,89 @@
+name                                time/op
+Adler_32b-2                          483µs ± 4%
+Blake2b_256b-2                      1.20ms ±11%
+Blake2b_512b-2                      1.13ms ± 1%
+Blake3_verLuke_256b-2                533µs ± 1%
+Blake3_verLuke_256b_Sum256-2         530µs ± 1%
+Blake3_verLuke_512b-2                536µs ± 1%
+Blake3_verLuke_512b_Sum512-2         529µs ± 0%
+Blake3_verZeebo_256b-2               400µs ± 7%
+Blake3_verZeebo_256b_Sum256-2        506µs ± 1%
+Blake3_verZeebo_512b-2               553µs ±18%
+Blake3_verZeebo_512b_Sum512-2        499µs ± 0%
+MMH3_128b-2                          240µs ± 1%
+CRC_32b-2                           68.4µs ± 6%
+Fnv1_128b-2                         3.55ms ± 2%
+Fnv1a_128b-2                        3.47ms ± 4%
+MD5_128b-2                          1.73ms ± 6%
+SHA1_160b-2                         1.19ms ± 1%
+SHA_256b-2                          3.21ms ±18%
+SHA_512b-2                          2.21ms ± 6%
+SHA3_256b-2                         3.75ms ± 3%
+SHA3_512b-2                         7.00ms ± 3%
+Whirlpool_512b-2                    31.4ms ± 5%
+XxhashCespare_8byte_64bit-2         88.4µs ± 3%
+XxhashCespare_8byte_64bit_Sum64-2   90.5µs ± 9%
+XxhashOneOfOne_4byte_32bit-2         263µs ± 2%
+XxhashOneOfOne_4byte_32bit_Sum32-2   194µs ± 0%
+XxhashOneOfOne_8byte_64bit-2         100µs ± 4%
+XxhashOneOfOne_8byte_64bit_Sum64-2  87.9µs ± 4%
+
+name                                alloc/op
+Adler_32b-2                          8.00B ± 0%
+Blake2b_256b-2                       32.0B ± 0%
+Blake2b_512b-2                       64.0B ± 0%
+Blake3_verLuke_256b-2                 256B ± 0%
+Blake3_verLuke_256b_Sum256-2         0.00B     
+Blake3_verLuke_512b-2                 512B ± 0%
+Blake3_verLuke_512b_Sum512-2         0.00B     
+Blake3_verZeebo_256b-2               64.0B ± 0%
+Blake3_verZeebo_256b_Sum256-2        0.00B     
+Blake3_verZeebo_512b-2               0.00B     
+Blake3_verZeebo_512b_Sum512-2        0.00B     
+MMH3_128b-2                          16.0B ± 0%
+CRC_32b-2                            8.00B ± 0%
+Fnv1_128b-2                          16.0B ± 0%
+Fnv1a_128b-2                         16.0B ± 0%
+MD5_128b-2                           16.0B ± 0%
+SHA1_160b-2                          24.0B ± 0%
+SHA_256b-2                           32.0B ± 0%
+SHA_512b-2                           64.0B ± 0%
+SHA3_256b-2                           512B ± 0%
+SHA3_512b-2                           576B ± 0%
+Whirlpool_512b-2                     64.0B ± 0%
+XxhashCespare_8byte_64bit-2          8.00B ± 0%
+XxhashCespare_8byte_64bit_Sum64-2    0.00B     
+XxhashOneOfOne_4byte_32bit-2         8.00B ± 0%
+XxhashOneOfOne_4byte_32bit_Sum32-2   0.00B     
+XxhashOneOfOne_8byte_64bit-2         8.00B ± 0%
+XxhashOneOfOne_8byte_64bit_Sum64-2   0.00B     
+
+name                                allocs/op
+Adler_32b-2                           1.00 ± 0%
+Blake2b_256b-2                        1.00 ± 0%
+Blake2b_512b-2                        1.00 ± 0%
+Blake3_verLuke_256b-2                 1.00 ± 0%
+Blake3_verLuke_256b_Sum256-2          0.00     
+Blake3_verLuke_512b-2                 1.00 ± 0%
+Blake3_verLuke_512b_Sum512-2          0.00     
+Blake3_verZeebo_256b-2                2.00 ± 0%
+Blake3_verZeebo_256b_Sum256-2         0.00     
+Blake3_verZeebo_512b-2                0.00     
+Blake3_verZeebo_512b_Sum512-2         0.00     
+MMH3_128b-2                           1.00 ± 0%
+CRC_32b-2                             1.00 ± 0%
+Fnv1_128b-2                           1.00 ± 0%
+Fnv1a_128b-2                          1.00 ± 0%
+MD5_128b-2                            1.00 ± 0%
+SHA1_160b-2                           1.00 ± 0%
+SHA_256b-2                            1.00 ± 0%
+SHA_512b-2                            1.00 ± 0%
+SHA3_256b-2                           3.00 ± 0%
+SHA3_512b-2                           3.00 ± 0%
+Whirlpool_512b-2                      1.00 ± 0%
+XxhashCespare_8byte_64bit-2           1.00 ± 0%
+XxhashCespare_8byte_64bit_Sum64-2     0.00     
+XxhashOneOfOne_4byte_32bit-2          1.00 ± 0%
+XxhashOneOfOne_4byte_32bit_Sum32-2    0.00     
+XxhashOneOfOne_8byte_64bit-2          1.00 ± 0%
+XxhashOneOfOne_8byte_64bit_Sum64-2    0.00     
