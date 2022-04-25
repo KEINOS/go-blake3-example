@@ -25,7 +25,7 @@ fmt.Println("actual:", actual)
   - [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3) | BLAKE(hash function) @ Wikipedia
   - [Official repo for Rust and C](https://github.com/BLAKE3-team/BLAKE3) | BLAKE3 Team @ GitHub
 - About BLAKE3 for Go
-  - We compared the below BLAKE3 implementations in Go (Unofficial)
+  - We compared the below BLAKE3 implementations in Go. Both unofficial but works great.
   - Luke Champine's BLAKE3 for Go
     - `go get lukechampine.com/blake3`
     - [Repo](https://github.com/lukechampine/blake3) | lukechampine @ GitHub
@@ -37,11 +37,11 @@ fmt.Println("actual:", actual)
 
 ## Bench Results
 
-OMG ...
+O.M.G. ... ...
 
 Even `blake3.Sum512()`(64 Bytes long BLAKE3 hash) is faster than `fnv.New32()`(4 Bytes long [FNV1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash).
 
-Blake3-512bit (Luke ver.) was 676 μs/op ± 0% and FNV1a-128 was 3.53k μs/op ± 0% ... ... Am I doing [something](./benchmark_test.go) wrong? Please let us know in the [issues](https://github.com/KEINOS/go-blake3-example/issues) if you have found something unfair.
+Blake3-512bit (Luke ver.) was `676 μs/op ± 0%` and FNV1a-128bit was `3.53k μs/op ± 0%` ... ... Am I doing [something](./benchmark_test.go) wrong? If you have found something unfair, lease let us know in the [issues](https://github.com/KEINOS/go-blake3-example/issues). 😉
 
 ### Benchmarking and Statistics
 
