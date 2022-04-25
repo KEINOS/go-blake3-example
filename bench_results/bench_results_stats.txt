@@ -1,0 +1,89 @@
+name                                μs/op
+CRC_32b-4                            71.5 ± 0%
+XxhashCespare_8byte_64bit-4          87.4 ± 0%
+XxhashOneOfOne_8byte_64bit_Sum64-4    108 ± 0%
+XxhashOneOfOne_8byte_64bit-4          101 ± 0%
+XxhashCespare_8byte_64bit_Sum64-4     105 ± 0%
+XxhashOneOfOne_4byte_32bit_Sum32-4    204 ± 0%
+MMH3_128b-4                           253 ± 0%
+XxhashOneOfOne_4byte_32bit-4          292 ± 0%
+Blake3_verZeebo_256b-4                414 ± 0%
+Blake3_verZeebo_256b_Sum256-4         488 ± 0%
+Blake3_verZeebo_512b-4                588 ± 0%
+Blake3_verLuke_256b_Sum256-4          597 ± 0%
+Blake3_verLuke_512b_Sum512-4          676 ± 0%
+Blake3_verZeebo_512b_Sum512-4         562 ± 0%
+Blake3_verLuke_512b-4                 727 ± 0%
+Blake3_verLuke_256b-4                 637 ± 0%
+Adler_32b-4                           711 ± 0%
+Blake2b_256b-4                      1.14k ± 0%
+Blake2b_512b-4                      1.48k ± 0%
+SHA1_160b-4                         1.36k ± 0%
+MD5_128b-4                          1.81k ± 0%
+SHA_512b-4                          2.25k ± 0%
+Fnv1a_128b-4                        3.53k ± 0%
+SHA_256b-4                          3.32k ± 0%
+Fnv1_128b-4                         3.66k ± 0%
+SHA3_256b-4                         3.96k ± 0%
+SHA3_512b-4                         7.04k ± 0%
+Whirlpool_512b-4                    35.3k ± 0%
+
+name                                alloc/op
+CRC_32b-4                           8.00B ± 0%
+XxhashCespare_8byte_64bit-4         8.00B ± 0%
+XxhashOneOfOne_8byte_64bit_Sum64-4  0.00B     
+XxhashOneOfOne_8byte_64bit-4        8.00B ± 0%
+XxhashCespare_8byte_64bit_Sum64-4   0.00B     
+XxhashOneOfOne_4byte_32bit_Sum32-4  0.00B     
+MMH3_128b-4                         16.0B ± 0%
+XxhashOneOfOne_4byte_32bit-4        8.00B ± 0%
+Blake3_verZeebo_256b-4              64.0B ± 0%
+Blake3_verZeebo_256b_Sum256-4       0.00B     
+Blake3_verZeebo_512b-4              0.00B     
+Blake3_verLuke_256b_Sum256-4        0.00B     
+Blake3_verLuke_512b_Sum512-4        0.00B     
+Blake3_verZeebo_512b_Sum512-4       0.00B     
+Blake3_verLuke_512b-4                512B ± 0%
+Blake3_verLuke_256b-4                256B ± 0%
+Adler_32b-4                         8.00B ± 0%
+Blake2b_256b-4                      32.0B ± 0%
+Blake2b_512b-4                      64.0B ± 0%
+SHA1_160b-4                         24.0B ± 0%
+MD5_128b-4                          16.0B ± 0%
+SHA_512b-4                          64.0B ± 0%
+Fnv1a_128b-4                        16.0B ± 0%
+SHA_256b-4                          32.0B ± 0%
+Fnv1_128b-4                         16.0B ± 0%
+SHA3_256b-4                          512B ± 0%
+SHA3_512b-4                          576B ± 0%
+Whirlpool_512b-4                    64.0B ± 0%
+
+name                                allocs/op
+CRC_32b-4                            1.00 ± 0%
+XxhashCespare_8byte_64bit-4          1.00 ± 0%
+XxhashOneOfOne_8byte_64bit_Sum64-4   0.00     
+XxhashOneOfOne_8byte_64bit-4         1.00 ± 0%
+XxhashCespare_8byte_64bit_Sum64-4    0.00     
+XxhashOneOfOne_4byte_32bit_Sum32-4   0.00     
+MMH3_128b-4                          1.00 ± 0%
+XxhashOneOfOne_4byte_32bit-4         1.00 ± 0%
+Blake3_verZeebo_256b-4               2.00 ± 0%
+Blake3_verZeebo_256b_Sum256-4        0.00     
+Blake3_verZeebo_512b-4               0.00     
+Blake3_verLuke_256b_Sum256-4         0.00     
+Blake3_verLuke_512b_Sum512-4         0.00     
+Blake3_verZeebo_512b_Sum512-4        0.00     
+Blake3_verLuke_512b-4                1.00 ± 0%
+Blake3_verLuke_256b-4                1.00 ± 0%
+Adler_32b-4                          1.00 ± 0%
+Blake2b_256b-4                       1.00 ± 0%
+Blake2b_512b-4                       1.00 ± 0%
+SHA1_160b-4                          1.00 ± 0%
+MD5_128b-4                           1.00 ± 0%
+SHA_512b-4                           1.00 ± 0%
+Fnv1a_128b-4                         1.00 ± 0%
+SHA_256b-4                           1.00 ± 0%
+Fnv1_128b-4                          1.00 ± 0%
+SHA3_256b-4                          3.00 ± 0%
+SHA3_512b-4                          3.00 ± 0%
+Whirlpool_512b-4                     1.00 ± 0%

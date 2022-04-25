@@ -220,7 +220,7 @@ func benchHashWriteAndSum(b *testing.B, h hash.Hash) {
 }
 
 // The testData creates 1,000,000 bytes= 1MB (1e6) size of data.
-// The values are consistent and not random.
+// The returned values are consistent and not random.
 func testData(b *testing.B) []byte {
 	b.Helper()
 

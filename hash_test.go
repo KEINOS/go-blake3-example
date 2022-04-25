@@ -1,9 +1,13 @@
 package main
 
+// Tests of hash functionality before benchmarking.
+
 import (
+	"encoding/json"
 	"fmt"
 	"hash/fnv"
 	"io"
+	"os"
 	"testing"
 
 	xxHashOneOfOne "github.com/OneOfOne/xxhash"
@@ -81,68 +85,94 @@ func TestFNV1a_8byte_64bit(t *testing.T) {
 	assert.Equal(t, expect, actual)
 }
 
+// ============================================================================
+//  BLAKE3
+// ============================================================================
+
+// Helper function - It returns the golden values for BLAKE3 created from the
+// official Rust implementation. See ./testdata directory for details.
+func getTestCaseBlake3(t *testing.T, lenByte int) map[string]string {
+	t.Helper()
+
+	pathData := "./testdata/golden_data32.json"
+	if lenByte == 64 {
+		pathData = "./testdata/golden_data64.json"
+	}
+
+	dataRaw, err := os.ReadFile(pathData)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Key = intput, Value = expected hash value
+	dataJSON := map[string]string{}
+
+	err = json.Unmarshal(dataRaw, &dataJSON)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	return dataJSON
+}
+
 // ----------------------------------------------------------------------------
 //  BLAKE3 (Luke Champine ver.)
 // ----------------------------------------------------------------------------
 
 func TestBlake3Luke_32byte_256bit_Sum256(t *testing.T) {
-	input := "This is a string"
+	dataJSON := getTestCaseBlake3(t, 32)
 
-	valByte := blake3Luke.Sum256([]byte(input))
+	for input, expect := range dataJSON {
+		valByte := blake3Luke.Sum256([]byte(input))
+		actual := fmt.Sprintf("%x", valByte)
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f2"
-	actual := fmt.Sprintf("%x", valByte)
-
-	assert.Equal(t, expect, actual, "wrong hash value returned")
-}
-
-func TestBlake3Luke_32byte_256bit(t *testing.T) {
-	input := "This is a string"
-
-	h := blake3Luke.New(256, nil)
-
-	if _, err := h.Write([]byte(input)); err != nil {
-		t.Fatalf("failed to write data. Err: %v", err)
+		assert.Equal(t, expect, actual, "wrong hash value returned")
 	}
-
-	valByte := h.Sum(nil)[:32]
-
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f2"
-	actual := fmt.Sprintf("%x", valByte)
-
-	assert.Equal(t, expect, actual, "wrong hash value returned")
 }
 
-func TestBlake3Luke_64byte_512bit(t *testing.T) {
-	input := "This is a string"
+func TestBlake3Luke_32byte_256bit_write(t *testing.T) {
+	dataJSON := getTestCaseBlake3(t, 32)
 
-	hashByte := blake3Luke.Sum512([]byte(input))
+	for input, expect := range dataJSON {
+		h := blake3Luke.New(256, nil)
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f243a9903464658159cf8b216e79006e12ef3568851423fa7c97002cbb9ca4dc44"
-	actual := fmt.Sprintf("%x", hashByte)
+		if _, err := h.Write([]byte(input)); err != nil {
+			t.Fatalf("failed to write data. Err: %v", err)
+		}
 
-	assert.Equal(t, expect, actual, "wrong hash value returned")
+		valByte := h.Sum(nil)[:32]
+		actual := fmt.Sprintf("%x", valByte)
+
+		assert.Equal(t, expect, actual, "wrong hash value returned")
+	}
 }
 
 func TestBlake3Luke_64byte_512bit_Sum512(t *testing.T) {
-	input := "This is a string"
+	dataJSON := getTestCaseBlake3(t, 64)
 
-	h := blake3Luke.New(512, nil)
+	for input, expect := range dataJSON {
+		hashByte := blake3Luke.Sum512([]byte(input))
+		actual := fmt.Sprintf("%x", hashByte)
 
-	if _, err := h.Write([]byte(input)); err != nil {
-		t.Fatalf("failed to write data. Err: %v", err)
+		assert.Equal(t, expect, actual, "wrong hash value returned")
 	}
+}
 
-	valByte := h.Sum(nil)[:64]
+func TestBlake3Luke_64byte_512bit_write(t *testing.T) {
+	dataJSON := getTestCaseBlake3(t, 64)
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f243a9903464658159cf8b216e79006e12ef3568851423fa7c97002cbb9ca4dc44"
-	actual := fmt.Sprintf("%x", valByte)
+	for input, expect := range dataJSON {
+		h := blake3Luke.New(512, nil)
 
-	assert.Equal(t, expect, actual, "wrong hash value returned")
+		if _, err := h.Write([]byte(input)); err != nil {
+			t.Fatalf("failed to write data. Err: %v", err)
+		}
+
+		valByte := h.Sum(nil)[:64]
+		actual := fmt.Sprintf("%x", valByte)
+
+		assert.Equal(t, expect, actual, "wrong hash value returned")
+	}
 }
 
 // ----------------------------------------------------------------------------
@@ -150,69 +180,64 @@ func TestBlake3Luke_64byte_512bit_Sum512(t *testing.T) {
 // ----------------------------------------------------------------------------
 
 func TestBlake3Zeebo_32byte_256bit_Sum256(t *testing.T) {
-	input := "This is a string"
+	dataJSON := getTestCaseBlake3(t, 32)
 
-	valByte := blake3Zeebo.Sum256([]byte(input))
+	for input, expect := range dataJSON {
+		valByte := blake3Zeebo.Sum256([]byte(input))
+		actual := fmt.Sprintf("%x", valByte)
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f2"
-	actual := fmt.Sprintf("%x", valByte)
-
-	assert.Equal(t, expect, actual, "wrong hash value returned")
-}
-
-func TestBlake3Zeebo_32byte_256bit(t *testing.T) {
-	input := "This is a string"
-
-	h := blake3Zeebo.New()
-
-	if _, err := h.Write([]byte(input)); err != nil {
-		t.Fatalf("failed to write data. Err: %v", err)
+		assert.Equal(t, expect, actual, "wrong hash value returned")
 	}
-
-	valByte := h.Sum(nil)[:32]
-
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f2"
-	actual := fmt.Sprintf("%x", valByte)
-
-	assert.Equal(t, expect, actual, "wrong hash value returned")
 }
 
-func TestBlake3Zeebo_64byte_512bit(t *testing.T) {
-	input := "This is a string"
+func TestBlake3Zeebo_32byte_256bit_Write(t *testing.T) {
+	dataJSON := getTestCaseBlake3(t, 32)
 
-	hashByte := blake3Zeebo.Sum512([]byte(input))
+	for input, expect := range dataJSON {
+		h := blake3Zeebo.New()
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f243a9903464658159cf8b216e79006e12ef3568851423fa7c97002cbb9ca4dc44"
-	actual := fmt.Sprintf("%x", hashByte)
+		if _, err := h.Write([]byte(input)); err != nil {
+			t.Fatalf("failed to write data. Err: %v", err)
+		}
 
-	assert.Equal(t, expect, actual, "wrong hash value returned")
+		valByte := h.Sum(nil)[:32]
+		actual := fmt.Sprintf("%x", valByte)
+
+		assert.Equal(t, expect, actual, "wrong hash value returned")
+	}
 }
 
 func TestBlake3Zeebo_64byte_512bit_Sum512(t *testing.T) {
-	input := "This is a string"
+	dataJSON := getTestCaseBlake3(t, 64)
 
-	h := blake3Zeebo.New()
+	for input, expect := range dataJSON {
+		hashByte := blake3Zeebo.Sum512([]byte(input))
+		actual := fmt.Sprintf("%x", hashByte)
 
-	if _, err := h.Write([]byte(input)); err != nil {
-		t.Fatalf("failed to write data. Err: %v", err)
+		assert.Equal(t, expect, actual, "wrong hash value returned")
 	}
+}
 
-	d := h.Digest()
+func TestBlake3Zeebo_64byte_512bit_Write(t *testing.T) {
+	dataJSON := getTestCaseBlake3(t, 64)
 
-	out := make([]byte, 64)
-	d.Seek(0, io.SeekStart)
-	_, _ = d.Read(out)
+	for input, expect := range dataJSON {
+		h := blake3Zeebo.New()
 
-	valByte := out
+		if _, err := h.Write([]byte(input)); err != nil {
+			t.Fatalf("failed to write data. Err: %v", err)
+		}
 
-	// Expect value was taken from R implementation: https://github.com/dirkschumacher/blake3
-	expect := "718b749f12a61257438b2ea6643555fd995001c9d9ff84764f93f82610a780f243a9903464658159cf8b216e79006e12ef3568851423fa7c97002cbb9ca4dc44"
-	actual := fmt.Sprintf("%x", valByte)
+		d := h.Digest()
 
-	assert.Equal(t, expect, actual, "wrong hash value returned")
+		valByte := make([]byte, 64)
+		d.Seek(0, io.SeekStart)
+		_, _ = d.Read(valByte)
+
+		actual := fmt.Sprintf("%x", valByte)
+
+		assert.Equal(t, expect, actual, "wrong hash value returned")
+	}
 }
 
 // ----------------------------------------------------------------------------

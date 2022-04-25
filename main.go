@@ -1,3 +1,6 @@
+/*
+Example usge and benchmark results of [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3) implementation for Go by [@lukechampine](https://github.com/lukechampine/blake3).
+*/
 package main
 
 import (

@@ -1,0 +1,36 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/KEINOS/go-blake3-example
+cpu: Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz
+PASS
+benchmark                                      iter         time/iter   bytes alloc        allocs
+---------                                      ----         ---------   -----------        ------
+BenchmarkCRC_32b-4                            87654       71.47 μs/op        8 B/op   1 allocs/op
+BenchmarkXxhashCespare_8byte_64bit-4          66745       87.38 μs/op        8 B/op   1 allocs/op
+BenchmarkXxhashOneOfOne_8byte_64bit_Sum64-4   65907      108.02 μs/op        0 B/op   0 allocs/op
+BenchmarkXxhashOneOfOne_8byte_64bit-4         57350      100.86 μs/op        8 B/op   1 allocs/op
+BenchmarkXxhashCespare_8byte_64bit_Sum64-4    57160      105.10 μs/op        0 B/op   0 allocs/op
+BenchmarkXxhashOneOfOne_4byte_32bit_Sum32-4   27285      204.04 μs/op        0 B/op   0 allocs/op
+BenchmarkMMH3_128b-4                          23210      253.23 μs/op       16 B/op   1 allocs/op
+BenchmarkXxhashOneOfOne_4byte_32bit-4         21585      292.43 μs/op        8 B/op   1 allocs/op
+BenchmarkBlake3_verZeebo_256b-4               13783      414.41 μs/op       64 B/op   2 allocs/op
+BenchmarkBlake3_verZeebo_256b_Sum256-4        12142      488.15 μs/op        0 B/op   0 allocs/op
+BenchmarkBlake3_verZeebo_512b-4               10892      588.31 μs/op        0 B/op   0 allocs/op
+BenchmarkBlake3_verLuke_256b_Sum256-4         10843      597.17 μs/op        0 B/op   0 allocs/op
+BenchmarkBlake3_verLuke_512b_Sum512-4         10177      675.89 μs/op        0 B/op   0 allocs/op
+BenchmarkBlake3_verZeebo_512b_Sum512-4        10094      562.13 μs/op        0 B/op   0 allocs/op
+BenchmarkBlake3_verLuke_512b-4                 8479      727.34 μs/op      512 B/op   1 allocs/op
+BenchmarkBlake3_verLuke_256b-4                 8462      637.10 μs/op      256 B/op   1 allocs/op
+BenchmarkAdler_32b-4                           8172      711.20 μs/op        8 B/op   1 allocs/op
+BenchmarkBlake2b_256b-4                        4824     1137.15 μs/op       32 B/op   1 allocs/op
+BenchmarkBlake2b_512b-4                        4567     1476.38 μs/op       64 B/op   1 allocs/op
+BenchmarkSHA1_160b-4                           3822     1362.28 μs/op       24 B/op   1 allocs/op
+BenchmarkMD5_128b-4                            3396     1807.97 μs/op       16 B/op   1 allocs/op
+BenchmarkSHA_512b-4                            2646     2254.14 μs/op       64 B/op   1 allocs/op
+BenchmarkFnv1a_128b-4                          1767     3532.62 μs/op       16 B/op   1 allocs/op
+BenchmarkSHA_256b-4                            1672     3316.44 μs/op       32 B/op   1 allocs/op
+BenchmarkFnv1_128b-4                           1658     3659.57 μs/op       16 B/op   1 allocs/op
+BenchmarkSHA3_256b-4                           1396     3958.20 μs/op      512 B/op   3 allocs/op
+BenchmarkSHA3_512b-4                            783     7036.49 μs/op      576 B/op   3 allocs/op
+BenchmarkWhirlpool_512b-4                       178    35308.73 μs/op       64 B/op   1 allocs/op
+ok  	github.com/KEINOS/go-blake3-example	225.237s
