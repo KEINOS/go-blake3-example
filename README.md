@@ -1,3 +1,5 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/KEINOS/go-blake3-example.svg)](https://pkg.go.dev/[github.com/KEINOS/go-pallet/pallet](https://pkg.go.dev/github.com/KEINOS/go-blake3-example))
+
 # Example Usage of [BLAKE3 for Go](https://github.com/lukechampine/blake3)
 
 Example usge and benchmark results of [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3) implementation for Go by [@lukechampine](https://github.com/lukechampine/blake3).
