@@ -41,7 +41,9 @@ O.M.G. ... ...
 
 Even `blake3.Sum512()`(64 Bytes long BLAKE3 hash) is faster than `fnv.New32()`(4 Bytes long [FNV1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash).
 
-Blake3-512bit (Luke ver.) was `676 μs/op ± 0%` and FNV1a-128bit was `3.53k μs/op ± 0%` ... ... Am I doing [something](./benchmark_test.go) wrong? If you have found something unfair, lease let us know in the [issues](https://github.com/KEINOS/go-blake3-example/issues). 😉
+Blake3-512bit (Luke ver.) was `676 μs/op ± 0%` and FNV1a-128bit was `3.53k μs/op ± 0%`.
+
+... ... Am I doing [something](./bench_test.go) wrong? If you have found something unfair, lease let us know in the [issues](https://github.com/KEINOS/go-blake3-example/issues). 😉
 
 ### Benchmarking and Statistics
 
